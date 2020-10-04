@@ -16,15 +16,22 @@ In this project, the objective is to have many images from different points of v
 
 I had to take many images for each painting under different angles, because many paintings look very similar. Therefore I made the decision to film each painting turning around it to have a lot of images. For each painting, I had a video of about 8 seconds with 60 frames per second, which corresponds to 8 x 60 = 480 images per painting approximatively.
 
-ADD PICTURE
+**_Image 1: Visualization of the data collection_**
+
+![alt text](https://github.com/jean-ababii/painting-classifier/blob/main/images/collecting_data.PNG)
+
 
 My validation dataset was directly composed of 20% of the available images. Theoretically, this is a desired thing since we want the distribution of the images making up these 2 categories to be as close as possible. However, in practice, the training images are extremely close to the validation databases, hence the false very good performance I was expecting and had.
 
 At the same time, I took pictures of these paintings directly with my smartphone, introducing problems in a wanted way (blurred image, too far, too close, person walking in front, annoying reflections, several paintings at the same time...) in order to better simulate the use of the app by real users, in the worst case. The images acquired in this way compose my test database. Once these videos had been acquired for 55 paintings (limit imposed by lack of storage during my visit to the museum, but still largely sufficient), I extracted all the images making up each painting using the "Video to JPG converter”.
 
-ADD PICTURE
+**_Image 2: Example of the extracted pictures_**
 
-ADD PICTURE
+![alt text](https://github.com/jean-ababii/painting-classifier/blob/main/images/example_extracted_pictures.PNG)
+
+**_Image 3: Example of some "bad" pictures composing the test dataset_**
+
+![alt text](https://github.com/jean-ababii/painting-classifier/blob/main/images/example_bad_pictures.PNG)
 
 ## Data preprocessing
 
@@ -35,6 +42,15 @@ Moreover, I later added data augmentation in order to better generalize. Indeed,
 ## Model training
 
 I decided to use the fine-tuning strategy, by using pre-trained networks on other databases, which consists in training only the last layers of the deep learning model to adapt it to your own data, because the basic patterns of a picture are already contained in the first layers of the model. It allows to have much better performance and therefore to reduce training time which can take a lot of time on image databases. In addition, keeping in mind my final idea of deployment on a mobile app, I chose to use a pre-trained Mobilenet V2 network, particularly suitable for deployment on embedded systems. I chose to use a classification on the image given as input, each of the 55 paintings representing one of the possible classes.
+
+**_Image 4: Screenshot of the model_**
+
+![alt text](https://github.com/jean-ababii/painting-classifier/blob/main/images/model.PNG)
+
+**_Image 4: Visualization of some predictions on the augmented data_**
+
+![alt text](https://github.com/jean-ababii/painting-classifier/blob/main/images/predictions_0310_3.png)
+
 
 ## Cloud computing
 
